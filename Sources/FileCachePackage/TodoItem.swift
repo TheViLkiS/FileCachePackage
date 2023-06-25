@@ -3,14 +3,14 @@ import Foundation
 @available(iOS 15, *)
 public struct ToDoItem {
     
-    let id: String
-    var text: String
-    var priority: Priority
-    var deadline: Date?
-    var isDone: Bool
-    var creationDate: Date
-    var modifyDate: Date?
-    var colorHEX: String
+    public let id: String
+    public var text: String
+    public var priority: Priority
+    public var deadline: Date?
+    public var isDone: Bool
+    public var creationDate: Date
+    public var modifyDate: Date?
+    public var colorHEX: String
     
     public enum Priority: String {
         case low
