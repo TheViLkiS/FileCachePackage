@@ -12,13 +12,13 @@ public struct ToDoItem {
     var modifyDate: Date?
     var colorHEX: String
     
-    enum Priority: String {
+    public enum Priority: String {
         case low
         case normal
         case high
     }
     
-    init(id number: String = UUID().uuidString,
+   public init(id number: String = UUID().uuidString,
          text: String,
          priority: Priority,
          deadline: Date? = nil,
