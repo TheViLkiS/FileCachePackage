@@ -1,6 +1,6 @@
 import Foundation
 
-enum FileType {
+public enum FileType {
     case json
     case csv
 }
@@ -10,15 +10,15 @@ enum ErrorToDo: Error {
 }
 
 @available(iOS 15, *)
-class FileCache {
+open class FileCache {
     
     private var collectionToDo = [String: ToDoItem]()
     
-    func getCollectionToDo() -> [ToDoItem] {
+    open func getCollectionToDo() -> [ToDoItem] {
         return Array(collectionToDo.values)
     }
     
-    func addNewToDo(_ todo: ToDoItem) throws {
+    open func addNewToDo(_ todo: ToDoItem) throws {
         if collectionToDo[todo.id] == nil {
             collectionToDo[todo.id] = todo
         } else {
@@ -26,11 +26,11 @@ class FileCache {
         }
     }
     
-    func deleteToDo(_ id: String) {
+    open func deleteToDo(_ id: String) {
         collectionToDo[id] = nil
     }
     
-    static func getDocumentsDirectory() -> URL {
+    public static func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
@@ -39,7 +39,7 @@ class FileCache {
 @available(iOS 15, *)
 extension FileCache {
     
-    private func convertJsonToString() -> String {
+    public func convertJsonToString() -> String {
         guard let jsonData = try? JSONSerialization.data(withJSONObject: self.createCache(fileType: .json), options: []) else {
             print("Convert JSONSerialization error")
             return ""
@@ -48,7 +48,7 @@ extension FileCache {
         return jsonString
     }
     
-    static func readJsonString(jsonString: String) -> Any {
+   public static func readJsonString(jsonString: String) -> Any {
         guard let jsonData = jsonString.data(using: String.Encoding.utf8) else {
             print("couldn't encode string as UTF-8")
             return ""
@@ -64,7 +64,7 @@ extension FileCache {
 @available(iOS 15, *)
 extension FileCache {
     
-    static func readFromFile(fileName: String, fileType: FileType) -> FileCache? {
+   public static func readFromFile(fileName: String, fileType: FileType) -> FileCache? {
         
         let fileCache = FileCache()
         
@@ -115,7 +115,7 @@ extension FileCache {
 @available(iOS 15, *)
 extension FileCache {
     
-     func createCache(fileType: FileType) -> [String: [Any]] {
+    public func createCache(fileType: FileType) -> [String: [Any]] {
         var todoItemJsonRepresentationArray = [Any]()
         for item in collectionToDo.values {
             let todo = fileType == .json ? item.json : item.csv
@@ -125,7 +125,7 @@ extension FileCache {
         return jsonObject
     }
     
-    func saveToFile(fileName: String, fileType: FileType) {
+    public func saveToFile(fileName: String, fileType: FileType) {
         
         let fullPath = FileCache.getDocumentsDirectory().appendingPathComponent(fileName )
         var strFrom = String()
@@ -152,7 +152,7 @@ extension FileCache {
 @available(iOS 15, *)
 extension FileCache {
     
-    static func saveToDefaultFileAsync(collectionToDo: [ToDoItem], collectionToDoComplete: [ToDoItem]) {
+   public static func saveToDefaultFileAsync(collectionToDo: [ToDoItem], collectionToDoComplete: [ToDoItem]) {
        
         DispatchQueue.global(qos: .userInitiated).async {
             

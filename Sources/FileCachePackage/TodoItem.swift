@@ -1,7 +1,7 @@
 import Foundation
 
 @available(iOS 15, *)
-struct ToDoItem {
+public struct ToDoItem {
     
     let id: String
     var text: String
