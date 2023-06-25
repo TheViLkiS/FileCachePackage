@@ -12,6 +12,8 @@ enum ErrorToDo: Error {
 @available(iOS 15, *)
 open class FileCache {
     
+    public init() {}
+    
     private var collectionToDo = [String: ToDoItem]()
     
     open func getCollectionToDo() -> [ToDoItem] {
