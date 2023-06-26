@@ -41,7 +41,7 @@ public struct ToDoItem {
 @available(iOS 15, *)
 extension ToDoItem {
     
-    var json: Any {
+    public var json: Any {
         var contentOfObj = ["text": text,
                             "isDone": String(isDone),
                             "creationDate": String(creationDate.timeIntervalSince1970),
@@ -64,7 +64,7 @@ extension ToDoItem {
         return jsonObject
     }
     
-    static func parseJson(json: Any) -> ToDoItem? {
+    public static func parseJson(json: Any) -> ToDoItem? {
         guard let json = json as? String else {
             print("JSON not String")
             return nil
@@ -86,13 +86,13 @@ extension ToDoItem {
 @available(iOS 15, *)
 extension ToDoItem {
     
-    var csv: Any {
+    public var csv: Any {
         let contentOfObj = "\(id),\(text),\(priority.rawValue),\((deadline?.timeIntervalSince1970) ?? 0),\(isDone),\(creationDate.timeIntervalSince1970),\((modifyDate?.timeIntervalSince1970) ?? 0)"
    
         return contentOfObj
     }
 
-    static func parseCSV(csv: Any) -> ToDoItem? {
+    public static func parseCSV(csv: Any) -> ToDoItem? {
         guard let csv = csv as? String else {
             print("csv not String")
             return nil
