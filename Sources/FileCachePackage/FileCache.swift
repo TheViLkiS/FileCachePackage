@@ -47,6 +47,8 @@ extension FileCache {
             return ""
         }
         let jsonString = String(data: jsonData, encoding: .utf8) ?? ""
+        print("jsonString - \(jsonString)")
+
         return jsonString
     }
     
@@ -59,6 +61,7 @@ extension FileCache {
             print("Ошибка FileCahche JSONSerialization")
             return ""
         }
+       print("dictionaryFunc - \(dictionaryFunc)")
         return dictionaryFunc
     }
 }
