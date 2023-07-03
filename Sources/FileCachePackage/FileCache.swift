@@ -104,7 +104,7 @@ extension FileCache {
             return nil
         }
         
-        guard let allToDo = allToDoString["collectionToDo"] else {return nil}
+        guard let allToDo = allToDoString["list"] else {return nil}
         for iToDo in allToDo {
             let todoTmp = ToDoItem.parseJson(json: iToDo) ?? ToDoItem(id: "", text: "", priority: .low)
             
@@ -123,7 +123,7 @@ extension FileCache {
             let todo = fileType == .json ? item.json : item.csv
             todoItemJsonRepresentationArray.append(todo)
         }
-        let jsonObject = ["collectionToDo": todoItemJsonRepresentationArray]
+        let jsonObject = ["list": todoItemJsonRepresentationArray]
         return jsonObject
     }
     
