@@ -1,7 +1,7 @@
 import Foundation
 
 @available(iOS 15, *)
-public struct ToDoItem {
+public struct ToDoItem: Codable {
     
     public let id: String
     public var text: String
@@ -12,10 +12,21 @@ public struct ToDoItem {
     public var modifyDate: Date?
     public var colorHEX: String
     
-    public enum Priority: String {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case text
+        case priority = "importance"
+        case deadline
+        case isDone = "done"
+        case creationDate = "created_at"
+        case modifyDate = "changed_at"
+        case colorHEX = "color"
+    }
+    
+    public enum Priority: String, Codable {
         case low
-        case normal
-        case high
+        case normal = "basic"
+        case high = "important"
     }
     
    public init(id number: String = UUID().uuidString,
