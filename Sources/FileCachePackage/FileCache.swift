@@ -124,7 +124,9 @@ extension FileCache {
             todoItemJsonRepresentationArray.append(todo)
         }
         let jsonObject = ["list": todoItemJsonRepresentationArray]
+        print("jsonOBJ - \(jsonObject)")
         return jsonObject
+        
     }
     
     public func saveToFile(fileName: String, fileType: FileType) {
