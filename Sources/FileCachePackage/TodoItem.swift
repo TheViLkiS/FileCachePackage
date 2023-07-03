@@ -1,7 +1,7 @@
 import Foundation
 
 @available(iOS 15, *)
-public struct ToDoItem {
+public struct ToDoItem: Codable {
     
     public let id: String
     public var text: String
@@ -12,7 +12,18 @@ public struct ToDoItem {
     public var modifyDate: Date?
     public var colorHEX: String
     
-    public enum Priority: String, Decodable {
+    enum CodingKeys: String, CodingKey {
+        case id
+        case text
+        case priority = "importance"
+        case deadline
+        case isDone = "done"
+        case creationDate = "created_at"
+        case modifyDate = "changed_at"
+        case colorHEX = "color"
+    }
+    
+    public enum Priority: String, Codable {
         case low
         case normal = "basic"
         case high = "important"
@@ -37,39 +48,6 @@ public struct ToDoItem {
     }
   
 }
-
-@available(iOS 15, *)
-extension ToDoItem: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case id
-        case text
-        case priority = "importance"
-        case deadline
-        case isDone = "done"
-        case creationDate = "created_at"
-        case modifyDate = "changed_at"
-        case colorHEX = "color"
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(String.self, forKey: .id)
-        text = try values.decode(String.self, forKey: .text)
-        priority = try values.decode(Priority.self, forKey: .priority)
-        let deadlineTimestamp = try values.decode(Int64.self, forKey: .deadline)
-        deadline = Date(timeIntervalSince1970: TimeInterval(deadlineTimestamp))
-        isDone = try values.decode(Bool.self, forKey: .isDone)
-        let creationTimestamp = try values.decode(Int64.self, forKey: .creationDate)
-        creationDate = Date(timeIntervalSince1970: TimeInterval(creationTimestamp))
-        if let modifyTimestamp = try values.decodeIfPresent(Int64.self, forKey: .modifyDate) {
-            modifyDate = Date(timeIntervalSince1970: TimeInterval(modifyTimestamp))
-        } else {
-            modifyDate = nil
-        }
-        colorHEX = try values.decode(String.self, forKey: .colorHEX)
-    }
-}
-
 
 @available(iOS 15, *)
 extension ToDoItem {
