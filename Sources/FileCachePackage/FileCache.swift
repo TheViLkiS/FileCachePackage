@@ -34,7 +34,6 @@ open class FileCache: Codable {
     
     public static func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        print(paths)
         return paths[0]
     }
 }
