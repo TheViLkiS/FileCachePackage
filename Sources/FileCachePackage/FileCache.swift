@@ -169,7 +169,7 @@ extension FileCache {
                 try? fileCache.addNewToDo(i)
             }
             
-            fileCache.saveToFile(fileName: "fileCacheForTestsTwo", fileType: .json)
+            fileCache.saveToFile(fileName: "fileCacheForTests", fileType: .json)
         }
     }
 }
