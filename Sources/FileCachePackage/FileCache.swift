@@ -10,7 +10,7 @@ enum ErrorToDo: Error {
 }
 
 @available(iOS 15, *)
-open class FileCache: Codable {
+open class FileCache {
     
     public init() {}
     
@@ -104,7 +104,7 @@ extension FileCache {
             return nil
         }
         
-        guard let allToDo = allToDoString["list"] else {return nil}
+        guard let allToDo = allToDoString["collectionToDo"] else {return nil}
         for iToDo in allToDo {
             let todoTmp = ToDoItem.parseJson(json: iToDo) ?? ToDoItem(id: "", text: "", priority: .low)
             
@@ -123,10 +123,8 @@ extension FileCache {
             let todo = fileType == .json ? item.json : item.csv
             todoItemJsonRepresentationArray.append(todo)
         }
-        let jsonObject = ["list": todoItemJsonRepresentationArray]
-        print("jsonOBJ - \(jsonObject)")
+        let jsonObject = ["collectionToDo": todoItemJsonRepresentationArray]
         return jsonObject
-        
     }
     
     public func saveToFile(fileName: String, fileType: FileType) {
@@ -171,8 +169,7 @@ extension FileCache {
                 try? fileCache.addNewToDo(i)
             }
             
-            fileCache.saveToFile(fileName: "fileCacheForTestsTwo", fileType: .json)
+            fileCache.saveToFile(fileName: "fileCacheForTests", fileType: .json)
         }
     }
 }
-
