@@ -10,7 +10,7 @@ enum ErrorToDo: Error {
 }
 
 @available(iOS 15, *)
-open class FileCache {
+open class FileCache: Codable {
     
     public init() {}
     
