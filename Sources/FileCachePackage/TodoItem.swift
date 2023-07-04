@@ -26,7 +26,7 @@ public struct ToDoItem: Codable {
     public var creationDate: Date
     public var modifyDate: Date?
     public var colorHEX: String
-    public var last_updated_by: Int
+    public var last_updated_by: Int64
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -54,7 +54,7 @@ public struct ToDoItem: Codable {
          creationDate: Date = .now,
          modifyDate: Date? = nil,
         colorHEX: String = "000000FF",
-        last_updated_by: Int = 723186) {
+        last_updated_by: Int64 = 723186) {
         id = number
         self.text = text
         self.priority = priority
