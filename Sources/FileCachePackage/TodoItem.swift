@@ -54,7 +54,7 @@ public struct ToDoItem: Codable {
          creationDate: Date = .now,
          modifyDate: Date? = nil,
         colorHEX: String = "000000FF",
-        last_updated_by: String = "723186") {
+        last_updated_by: String = "") {
         id = number
         self.text = text
         self.priority = priority
