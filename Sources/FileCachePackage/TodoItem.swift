@@ -84,12 +84,12 @@ public struct APIListResponse: Codable {
 public struct APIElementResponse: Codable {
     public let status: String
     public let element: TodoItemServerModel
-    public let revision: Int
     
-    public init(status: String, element: TodoItemServerModel, revision: Int) {
+    
+    public init(status: String, element: TodoItemServerModel) {
         self.status = status
         self.element = element
-        self.revision = revision
+        
     }
 }
 
