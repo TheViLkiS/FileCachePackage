@@ -25,6 +25,12 @@ public struct ToDoItem: Codable {
         case last_updated_by
     }
     
+    public struct TodoList: Codable {
+        let status: String
+        let list: [ToDoItem]
+        let revision: Int
+    }
+    
     public enum Priority: String, Codable {
         case low
         case normal = "basic"
