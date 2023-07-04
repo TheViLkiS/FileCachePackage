@@ -3,11 +3,11 @@ import Foundation
 @available(iOS 15, *)
 public struct TodoList: Codable {
     public let status: String
-    public let list: [ToDoItem]
+    public let list: [ToDoItem]?
     public let revision: Int?
     public let element: ToDoItem?
     
-    public init(status: String, list: [ToDoItem], revision: Int? = nil, element: ToDoItem? = nil) {
+    public init(status: String, list: [ToDoItem]? = nil, revision: Int? = nil, element: ToDoItem? = nil) {
         self.status = status
         self.list = list
         self.revision = revision
