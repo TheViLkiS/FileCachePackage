@@ -26,7 +26,7 @@ public struct ToDoItem: Codable {
     public var creationDate: Date
     public var modifyDate: Date?
     public var colorHEX: String
-    public var last_updated_by: String
+    public var lastUpdatedBy: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -34,10 +34,10 @@ public struct ToDoItem: Codable {
         case priority = "importance"
         case deadline
         case isDone = "done"
-        case creationDate = "created_at"
-        case modifyDate = "changed_at"
+        case creationDate = "createdAt"
+        case modifyDate = "changedAt"
         case colorHEX = "color"
-        case last_updated_by
+        case lastUpdatedBy
     }
     
     public enum Priority: String, Codable {
@@ -54,7 +54,7 @@ public struct ToDoItem: Codable {
          creationDate: Date = .now,
          modifyDate: Date? = nil,
         colorHEX: String = "000000FF",
-        last_updated_by: String = "") {
+        lastUpdatedBy: String = "") {
         id = number
         self.text = text
         self.priority = priority
@@ -63,10 +63,36 @@ public struct ToDoItem: Codable {
         self.creationDate = creationDate
         self.modifyDate = modifyDate
         self.colorHEX = colorHEX
-        self.last_updated_by = last_updated_by
+        self.lastUpdatedBy = lastUpdatedBy
     }
   
 }
+@available(iOS 15, *)
+
+struct APIListResponse: Codable {
+    let status: String
+    let list:[TodoItemServerModel]
+    let revision: Int
+}
+
+struct APIElementResponse: Codable {
+    let status: String
+    let element: TodoItemServerModel
+    let revision: Int
+}
+
+struct TodoItemServerModel: Codable {
+    let id: String
+    let text: String
+    let importance: String
+    let deadline: Int64?
+    let done: Bool
+    let color: String?
+    let createdAt: Int64
+    let changedAt: Int64
+    let lastUpdatedBy: String
+}
+
 
 @available(iOS 15, *)
 extension ToDoItem {
