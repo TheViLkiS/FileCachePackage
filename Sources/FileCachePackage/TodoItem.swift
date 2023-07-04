@@ -2,9 +2,9 @@ import Foundation
 
 @available(iOS 15, *)
 public struct TodoList: Codable {
-    let status: String
-    let list: [ToDoItem]
-    let revision: Int
+    public let status: String
+    public let list: [ToDoItem]
+    public let revision: Int
 }
 
 @available(iOS 15, *)
