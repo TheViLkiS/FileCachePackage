@@ -86,7 +86,7 @@ public struct APIElementResponse: Codable {
     public let element: TodoItemServerModel
     
     
-    public init(status: String, element: TodoItemServerModel) {
+    public init(element: TodoItemServerModel) {
         self.element = element
         
     }
