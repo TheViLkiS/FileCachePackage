@@ -5,11 +5,13 @@ public struct TodoList: Codable {
     public let status: String
     public let list: [ToDoItem]
     public let revision: Int?
+    public let element: ToDoItem?
     
-    public init(status: String, list: [ToDoItem], revision: Int? = nil) {
+    public init(status: String, list: [ToDoItem], revision: Int? = nil, element: ToDoItem? = nil) {
         self.status = status
         self.list = list
         self.revision = revision
+        self.element = element
     }
 }
 
