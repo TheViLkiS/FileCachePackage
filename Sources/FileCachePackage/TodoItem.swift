@@ -1,6 +1,13 @@
 import Foundation
 
 @available(iOS 15, *)
+public struct TodoList: Codable {
+    let status: String
+    let list: [ToDoItem]
+    let revision: Int
+}
+
+@available(iOS 15, *)
 public struct ToDoItem: Codable {
     
     public let id: String
@@ -23,12 +30,6 @@ public struct ToDoItem: Codable {
         case modifyDate = "changed_at"
         case colorHEX = "color"
         case last_updated_by
-    }
-    
-    public struct TodoList: Codable {
-        let status: String
-        let list: [ToDoItem]
-        let revision: Int
     }
     
     public enum Priority: String, Codable {
