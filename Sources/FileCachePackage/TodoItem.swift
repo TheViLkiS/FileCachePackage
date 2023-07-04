@@ -69,28 +69,52 @@ public struct ToDoItem: Codable {
 }
 @available(iOS 15, *)
 
-struct APIListResponse: Codable {
-    let status: String
-    let list:[TodoItemServerModel]
-    let revision: Int
+public struct APIListResponse: Codable {
+    public let status: String
+    public let list:[TodoItemServerModel]
+    public let revision: Int
+    
+    init(status: String, list: [TodoItemServerModel], revision: Int) {
+        self.status = status
+        self.list = list
+        self.revision = revision
+    }
 }
 
-struct APIElementResponse: Codable {
-    let status: String
-    let element: TodoItemServerModel
-    let revision: Int
+public struct APIElementResponse: Codable {
+    public let status: String
+    public let element: TodoItemServerModel
+    public let revision: Int
+    
+    public init(status: String, element: TodoItemServerModel, revision: Int) {
+        self.status = status
+        self.element = element
+        self.revision = revision
+    }
 }
 
-struct TodoItemServerModel: Codable {
-    let id: String
-    let text: String
-    let importance: String
-    let deadline: Int64?
-    let done: Bool
-    let color: String?
-    let createdAt: Int64
-    let changedAt: Int64
-    let lastUpdatedBy: String
+public struct TodoItemServerModel: Codable {
+    public  let id: String
+    public let text: String
+    public let importance: String
+    public let deadline: Int64?
+    public  let done: Bool
+    public  let color: String?
+    public  let createdAt: Int64
+    public  let changedAt: Int64
+    public  let lastUpdatedBy: String
+    
+    public init(id: String, text: String, importance: String, deadline: Int64?, done: Bool, color: String?, createdAt: Int64, changedAt: Int64, lastUpdatedBy: String) {
+        self.id = id
+        self.text = text
+        self.importance = importance
+        self.deadline = deadline
+        self.done = done
+        self.color = color
+        self.createdAt = createdAt
+        self.changedAt = changedAt
+        self.lastUpdatedBy = lastUpdatedBy
+    }
 }
 
 
