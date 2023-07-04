@@ -102,9 +102,9 @@ public struct TodoItemServerModel: Codable {
     public  let color: String?
     public  let created_at: Int64
     public  let changed_at: Int64
-    public  let last_updated_by: String
+    public  let last_updated_by: String?
     
-    public init(id: String, text: String, importance: String, deadline: Int64?, done: Bool, color: String?, created_at: Int64, changed_at: Int64, last_updated_by: String) {
+    public init(id: String, text: String, importance: String, deadline: Int64?, done: Bool, color: String?, created_at: Int64, changed_at: Int64, last_updated_by: String? = nil) {
         self.id = id
         self.text = text
         self.importance = importance
