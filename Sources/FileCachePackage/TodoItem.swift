@@ -26,7 +26,7 @@ public struct ToDoItem: Codable {
     public var creationDate: Date
     public var modifyDate: Date?
     public var colorHEX: String
-    public var lastUpdatedBy: String
+    public var last_updated_by: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -34,10 +34,10 @@ public struct ToDoItem: Codable {
         case priority = "importance"
         case deadline
         case isDone = "done"
-        case creationDate = "createdAt"
-        case modifyDate = "changedAt"
+        case creationDate = "created_at"
+        case modifyDate = "changed_at"
         case colorHEX = "color"
-        case lastUpdatedBy
+        case last_updated_by
     }
     
     public enum Priority: String, Codable {
@@ -54,7 +54,7 @@ public struct ToDoItem: Codable {
          creationDate: Date = .now,
          modifyDate: Date? = nil,
         colorHEX: String = "000000FF",
-        lastUpdatedBy: String = "") {
+        last_updated_by: String = "") {
         id = number
         self.text = text
         self.priority = priority
@@ -63,7 +63,7 @@ public struct ToDoItem: Codable {
         self.creationDate = creationDate
         self.modifyDate = modifyDate
         self.colorHEX = colorHEX
-        self.lastUpdatedBy = lastUpdatedBy
+        self.last_updated_by = last_updated_by
     }
   
 }
@@ -100,20 +100,20 @@ public struct TodoItemServerModel: Codable {
     public let deadline: Int64?
     public  let done: Bool
     public  let color: String?
-    public  let createdAt: Int64
-    public  let changedAt: Int64
-    public  let lastUpdatedBy: String
+    public  let created_at: Int64
+    public  let changed_at: Int64
+    public  let last_updated_by: String
     
-    public init(id: String, text: String, importance: String, deadline: Int64?, done: Bool, color: String?, createdAt: Int64, changedAt: Int64, lastUpdatedBy: String) {
+    public init(id: String, text: String, importance: String, deadline: Int64?, done: Bool, color: String?, created_at: Int64, changed_at: Int64, last_updated_by: String) {
         self.id = id
         self.text = text
         self.importance = importance
         self.deadline = deadline
         self.done = done
         self.color = color
-        self.createdAt = createdAt
-        self.changedAt = changedAt
-        self.lastUpdatedBy = lastUpdatedBy
+        self.created_at = created_at
+        self.changed_at = changed_at
+        self.last_updated_by = last_updated_by
     }
 }
 
