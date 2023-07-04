@@ -11,6 +11,7 @@ public struct ToDoItem: Codable {
     public var creationDate: Date
     public var modifyDate: Date?
     public var colorHEX: String
+    public var last_updated_by: Int
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -21,6 +22,7 @@ public struct ToDoItem: Codable {
         case creationDate = "created_at"
         case modifyDate = "changed_at"
         case colorHEX = "color"
+        case last_updated_by
     }
     
     public enum Priority: String, Codable {
@@ -36,7 +38,8 @@ public struct ToDoItem: Codable {
          isDone: Bool = false,
          creationDate: Date = .now,
          modifyDate: Date? = nil,
-         colorHEX: String = "000000FF") {
+        colorHEX: String = "000000FF",
+        last_updated_by: Int = 723186) {
         id = number
         self.text = text
         self.priority = priority
@@ -45,6 +48,7 @@ public struct ToDoItem: Codable {
         self.creationDate = creationDate
         self.modifyDate = modifyDate
         self.colorHEX = colorHEX
+        self.last_updated_by = last_updated_by
     }
   
 }
