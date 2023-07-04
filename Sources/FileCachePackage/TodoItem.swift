@@ -4,9 +4,9 @@ import Foundation
 public struct TodoList: Codable {
     public let status: String
     public let list: [ToDoItem]
-    public let revision: Int
+    public let revision: Int?
     
-    public init(status: String, list: [ToDoItem], revision: Int) {
+    public init(status: String, list: [ToDoItem], revision: Int? = nil) {
         self.status = status
         self.list = list
         self.revision = revision
