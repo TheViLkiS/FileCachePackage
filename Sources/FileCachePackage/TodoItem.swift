@@ -5,6 +5,12 @@ public struct TodoList: Codable {
     public let status: String
     public let list: [ToDoItem]
     public let revision: Int
+    
+    public init(status: String, list: [ToDoItem], revision: Int) {
+        self.status = status
+        self.list = list
+        self.revision = revision
+    }
 }
 
 @available(iOS 15, *)
