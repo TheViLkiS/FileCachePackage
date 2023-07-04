@@ -74,7 +74,7 @@ public struct APIListResponse: Codable {
     public let list:[TodoItemServerModel]
     public let revision: Int
     
-    init(status: String, list: [TodoItemServerModel], revision: Int) {
+    public init(status: String, list: [TodoItemServerModel], revision: Int) {
         self.status = status
         self.list = list
         self.revision = revision
