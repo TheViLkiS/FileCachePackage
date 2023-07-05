@@ -74,11 +74,11 @@ extension ToDoItem {
     public var json: Any {
         var contentOfObj = ["text": text,
                             "isDone": String(isDone),
-                            "creationDate": String(creationDate.timeIntervalSince1970),
-                            "modifyDate": String(modifyDate?.timeIntervalSince1970 ?? 0),
+                            "creationDate": String(Int64(creationDate.timeIntervalSince1970)),
+                            "modifyDate": String(Int64(modifyDate?.timeIntervalSince1970 ?? 0)),
                             "colorHEX": colorHEX]
         if deadline != nil {
-            contentOfObj["deadline"] = String(deadline?.timeIntervalSince1970 ?? 0)
+            contentOfObj["deadline"] = String(Int64(deadline?.timeIntervalSince1970 ?? 0))
         }
         if priority.rawValue != "normal" {
             contentOfObj["priority"] = priority.rawValue
