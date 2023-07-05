@@ -52,7 +52,7 @@ public struct ToDoItem: Codable {
          deadline: Date? = nil,
          isDone: Bool = false,
          creationDate: Date = .now,
-         modifyDate: Date? = nil,
+               modifyDate: Date? = .now,
         colorHEX: String = "000000FF",
         last_updated_by: String = "") {
         id = number
@@ -67,55 +67,6 @@ public struct ToDoItem: Codable {
     }
   
 }
-@available(iOS 15, *)
-
-public struct APIListResponse: Codable {
-    public let status: String
-    public let list:[TodoItemServerModel]
-    public let revision: Int
-    
-    public init(status: String, list: [TodoItemServerModel], revision: Int) {
-        self.status = status
-        self.list = list
-        self.revision = revision
-    }
-}
-
-public struct APIElementResponse: Codable {
-
-    public let element: TodoItemServerModel
-    
-    
-    public init(element: TodoItemServerModel) {
-        self.element = element
-        
-    }
-}
-
-public struct TodoItemServerModel: Codable {
-    public  let id: String
-    public let text: String
-    public let importance: String
-    public let deadline: Int64?
-    public  let done: Bool
-    public  let color: String?
-    public  let created_at: Int64
-    public  let changed_at: Int64
-    public  let last_updated_by: String?
-    
-    public init(id: String, text: String, importance: String, deadline: Int64?, done: Bool, color: String?, created_at: Int64, changed_at: Int64, last_updated_by: String? = nil) {
-        self.id = id
-        self.text = text
-        self.importance = importance
-        self.deadline = deadline
-        self.done = done
-        self.color = color
-        self.created_at = created_at
-        self.changed_at = changed_at
-        self.last_updated_by = last_updated_by
-    }
-}
-
 
 @available(iOS 15, *)
 extension ToDoItem {
