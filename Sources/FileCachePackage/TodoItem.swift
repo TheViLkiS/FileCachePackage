@@ -16,7 +16,7 @@ public struct TodoList: Codable {
 }
 
 @available(iOS 15, *)
-public struct ToDoItem: Codable {
+public struct ToDoItem: Codable, Sendable {
     
     public let id: String
     public var text: String
@@ -40,7 +40,7 @@ public struct ToDoItem: Codable {
         case last_updated_by
     }
     
-    public enum Priority: String, Codable {
+    public enum Priority: String, Codable, Sendable {
         case low
         case normal = "basic"
         case high = "important"
